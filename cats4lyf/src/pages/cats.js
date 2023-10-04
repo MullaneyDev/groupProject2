@@ -4,21 +4,7 @@ import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
-const CatPage = ({ checkout, setCheckout }) => {
-  const [cats, setCats] = useState([]);
-
-  useEffect(() => {
-    console.log(cats);
-    const fetchData = async () => {
-      const catRequest = await fetch(
-        "https://api.thecatapi.com/v1/images/search?limit=10"
-      );
-      const catData = await catRequest.json();
-      setCats(catData);
-    };
-    fetchData();
-  }, []);
-
+const CatPage = ({ checkout, setCheckout, cats }) => {
   const buyCat = (cat) => {
     if (checkout.find((currentCat) => currentCat.id === cat.id) === undefined) {
       const archive = [...checkout];
@@ -30,9 +16,11 @@ const CatPage = ({ checkout, setCheckout }) => {
   return (
     <div className="App">
       <h1>Cats</h1>
-      {cats.map((currentCat, index) => {
-        return <Cat key={index} catInfo={currentCat} buyFunc={buyCat} />;
-      })}
+      <div className="catWindow">
+        {cats.map((currentCat, index) => {
+          return <Cat key={index} catInfo={currentCat} buyFunc={buyCat} />;
+        })}
+      </div>
     </div>
   );
 };
@@ -57,6 +45,10 @@ const Cat = ({ catInfo, buyFunc }) => {
     <>
       <div className="Cat" onClick={openModal}>
         <img className="catImage" src={catInfo.url} alt="catImage" />
+        <div className="CatDetails">
+          <h3>Cat Name</h3>
+          <h1>£ cat price</h1>
+        </div>
       </div>{" "}
       <Modal className="ModalStyle" isOpen={modal} onRequestClose={closeModal}>
         <img className="catImage" src={cat.url} alt="catImage" />

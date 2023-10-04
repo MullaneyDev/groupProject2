@@ -3,7 +3,7 @@ import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
-const CheckoutPage = ({ checkout, setCheckout }) => {
+const CheckoutPage = ({ checkout, setCheckout, cats }) => {
   const [modal, setModal] = useState(false);
   function openModal2() {
     setModal(true);

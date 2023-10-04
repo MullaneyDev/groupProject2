@@ -1,7 +1,25 @@
 .App {
   text-align: center;
+  margin: 10px;
 }
-
+nav {
+  display: flex;
+  background-color: darksalmon;
+  justify-content: space-between;
+  align-items: center;
+  border: solid salmon;
+  border-radius: 5px;
+}
+nav a {
+  margin: 10px;
+  text-decoration: none;
+  color: black;
+  border-radius: 5px;
+}
+nav a:hover {
+  padding: 10px;
+  background-color: salmon;
+}
 .ModalStyle {
   display: grid;
   grid-template-columns: 1fr;
@@ -13,4 +31,35 @@
   border: solid;
   border-radius: 10px;
   padding: 25px;
+}
+
+.catWindow {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  border-radius: 5px;
+  padding: 5px;
+}
+.Cat {
+  display: grid;
+  object-fit: contain;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  border: solid;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: white;
+}
+.Cat:hover {
+  background-color: salmon;
+}
+.catImage {
+  width: 200px;
+}
+.CatDetails {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }

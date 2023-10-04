@@ -45,6 +45,7 @@ nav a:hover {
 }
 .ModalStyle {
   display: grid;
+  justify-content: center;
   grid-template-columns: 1fr;
   position: absolute;
   top: 50%;

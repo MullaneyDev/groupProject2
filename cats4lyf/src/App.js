@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { faker } from "@faker-js/faker";
 import Cats from "./pages/cats";
 import Home from "./pages/home";
 import Checkout from "./pages/checkout";
@@ -17,7 +18,22 @@ function App() {
         "https://api.thecatapi.com/v1/images/search?limit=10"
       );
       const catData = await catRequest.json();
-      setCats(catData);
+      const newCat = catData.map((cat) => {
+        return {
+          id: cat.id,
+          url: cat.url,
+          name: faker.person.fullName(),
+          breed: faker.animal.cat(),
+          gender: faker.person.gender(),
+          price: faker.commerce.price({
+            min: 100,
+            max: 2000,
+            dec: 2,
+            symbol: "£",
+          }),
+        };
+      });
+      setCats(newCat);
     };
     fetchData();
   }, []);

@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
+import { faker } from "@faker-js/faker";
 import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
-const CatPage = (checkout, setCheckout) => {
+const CatPage = ({ checkout, setCheckout }) => {
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
+    console.log(cats);
     const fetchData = async () => {
       const catRequest = await fetch(
         "https://api.thecatapi.com/v1/images/search?limit=10"
@@ -54,7 +56,7 @@ const Cat = ({ catInfo, buyFunc }) => {
   return (
     <>
       <div className="Cat" onClick={openModal}>
-        <img className="catImage" src={cat.url} alt="catImage" />
+        <img className="catImage" src={catInfo.url} alt="catImage" />
       </div>{" "}
       <Modal className="ModalStyle" isOpen={modal} onRequestClose={closeModal}>
         <img className="catImage" src={cat.url} alt="catImage" />

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Cats from "./pages/cats";
 import Home from "./pages/home";
 import Checkout from "./pages/checkout";
+import { faker } from "@faker-js/faker";
 import "./App.css";
 
 function App() {

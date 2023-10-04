@@ -3,12 +3,8 @@ import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
-const checkoutPage = (checkout,setCheckout) => {
+const CheckoutPage = (checkout, setCheckout) => {
+  return;
+};
 
-
-
-    return (
-
-        
-    )
-}
+export default CheckoutPage;

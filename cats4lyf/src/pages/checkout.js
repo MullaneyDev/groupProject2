@@ -31,13 +31,21 @@ const CheckoutPage = ({ checkout, setCheckout, cats }) => {
                 alt="cats"
               ></img>
             </div>
+            <Modal
+              className="ModalStyle"
+              isOpen={modal}
+              onRequestClose={closeModal}
+            >
+              <img className="catImage" src={checkout.url} alt="catimage"></img>
+              <button onClick={() => removeItem(index)}>Delete Item</button>
+            </Modal>
           </>
         );
       })}
-      <Modal className="ModalStyle" isOpen={modal} onRequestClose={closeModal}>
+      {/* <Modal className="ModalStyle" isOpen={modal} onRequestClose={closeModal}>
         <img className="catImage" src={checkout.url} alt="catimage"></img>
-        <button onClick={removeItem}>Delete Item</button>
-      </Modal>
+        <button onClick={() => removeItem()}>Delete Item</button>
+      </Modal> */}
     </div>
   );
 };

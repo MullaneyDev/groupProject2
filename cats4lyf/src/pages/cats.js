@@ -11,21 +11,37 @@ const CatPage = ({ checkout, setCheckout, cats }) => {
       setCheckout(archive);
     }
   };
+  const removeCat = (cat) => {
+    const index = checkout.indexOf(cat);
+    if (checkout.find((currentCat) => currentCat.id === cat.id) !== undefined) {
+      const archive = [...checkout];
+      archive.splice(index, 1);
+      setCheckout(archive);
+    }
+  };
 
   return (
     <div className="App">
-      <h1>Cats</h1>
+      <h1>Available cats</h1>
       <div className="catWindow">
         {cats.map((currentCat, index) => {
-          return <Cat key={index} catInfo={currentCat} buyFunc={buyCat} />;
+          return (
+            <Cat
+              key={index}
+              catInfo={currentCat}
+              buyFunc={buyCat}
+              removeFunc={removeCat}
+            />
+          );
         })}
       </div>
     </div>
   );
 };
 
-const Cat = ({ catInfo, buyFunc }) => {
+const Cat = ({ catInfo, buyFunc, removeFunc }) => {
   const [modal, setModal] = useState(false);
+  const [toggle, setToggle] = useState(true);
 
   const openModal = async () => {
     setModal(true);
@@ -33,7 +49,14 @@ const Cat = ({ catInfo, buyFunc }) => {
   const closeModal = () => {
     setModal(false);
   };
-
+  const buyToggle = () => {
+    buyFunc(catInfo);
+    setToggle(!toggle);
+  };
+  const removeToggle = () => {
+    removeFunc(catInfo);
+    setToggle(!toggle);
+  };
   return (
     <>
       <div className="Cat" onClick={openModal}>
@@ -54,9 +77,16 @@ const Cat = ({ catInfo, buyFunc }) => {
           <p className="ownerName">{catInfo.ownerName}</p>
           <p className="ownerBio">{catInfo.ownerBio}</p>
           <p className="ownerEmail">{catInfo.ownerEmail}</p>
-          <button className="checkoutAdd" onClick={() => buyFunc(catInfo)}>
-            Add to Basket
-          </button>
+          {toggle && (
+            <button className="checkoutAdd" onClick={() => buyToggle()}>
+              Add to Basket
+            </button>
+          )}
+          {!toggle && (
+            <button className="checkoutRemove" onClick={() => removeToggle()}>
+              Remove from Basket
+            </button>
+          )}
         </>
       </Modal>
     </>

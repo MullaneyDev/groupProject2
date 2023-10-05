@@ -24,7 +24,10 @@ function App() {
           url: cat.url,
           name: faker.person.fullName(),
           breed: faker.animal.cat(),
-          gender: faker.person.gender(),
+          gender: faker.person.sex(),
+          ownerName: faker.person.fullName(),
+          ownerBio: faker.person.bio(),
+          ownerEmail: faker.internet.email(),
           price: faker.commerce.price({
             min: 100,
             max: 2000,

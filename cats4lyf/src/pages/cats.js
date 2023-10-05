@@ -55,7 +55,7 @@ const Cat = ({ catInfo, buyFunc }) => {
           <p className="ownerBio">{catInfo.ownerBio}</p>
           <p className="ownerEmail">{catInfo.ownerEmail}</p>
           <button className="checkoutAdd" onClick={() => buyFunc(catInfo)}>
-            Add to Checkout
+            Add to Basket
           </button>
         </>
       </Modal>

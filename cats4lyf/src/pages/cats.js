@@ -21,16 +21,15 @@ const CatPage = ({ checkout, setCheckout, cats, setCats }) => {
   };
 
   const changeSort = (e) => {
-    const value = e.target.value;
-    switch (value) {
-      default:
-        setCats([...cats]);
-        break;
+    switch (e.value) {
       case "priceLow":
-        setCats(cats.sort((a, b) => a.price - b.price));
+        setCats([...cats].sort((a, b) => a.price - b.price));
         break;
       case "priceHigh":
-        setCats(cats.sort((a, b) => b.price - a.price));
+        setCats([...cats].sort((a, b) => b.price - a.price));
+        break;
+      default:
+        setCats([...cats]);
         break;
     }
   };
@@ -38,7 +37,8 @@ const CatPage = ({ checkout, setCheckout, cats, setCats }) => {
   return (
     <div className="App">
       <h1>Available cats</h1>
-      <select onChange={(e) => changeSort(e.target.value)}>
+      <select onChange={(e) => changeSort(e.target)}>
+        <option>Default</option>
         <option value="priceLow">Price: Low to High</option>
         <option value="priceHigh">Price: High to Low</option>
       </select>

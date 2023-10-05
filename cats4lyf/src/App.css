@@ -85,8 +85,17 @@ nav a:hover {
   background-color: darksalmon;
   font-size: xx-large;
 }
+.checkoutRemove {
+  grid-column: 2;
+  grid-row: 5/7;
+  background-color: darksalmon;
+  font-size: xx-large;
+}
 .checkoutAdd:hover {
   background-color: lightgreen;
+}
+.checkoutRemove:hover {
+  background-color: lightcoral;
 }
 .ownerDetails {
   grid-column: 1;

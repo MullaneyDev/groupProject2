@@ -32,7 +32,6 @@ function App() {
             min: 100,
             max: 2000,
             dec: 2,
-            symbol: "£",
           }),
         };
       });

@@ -53,7 +53,12 @@ function App() {
         <Route
           path="/cats"
           element={
-            <Cats checkout={checkout} setCheckout={setCheckout} cats={cats} />
+            <Cats
+              checkout={checkout}
+              setCheckout={setCheckout}
+              cats={cats}
+              setCats={setCats}
+            />
           }
         />
         <Route

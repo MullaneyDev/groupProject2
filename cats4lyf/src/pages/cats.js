@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
-const CatPage = ({ checkout, setCheckout, cats }) => {
+const CatPage = ({ checkout, setCheckout, cats, setCats }) => {
   const buyCat = (cat) => {
     if (checkout.find((currentCat) => currentCat.id === cat.id) === undefined) {
       const archive = [...checkout];
@@ -20,9 +20,28 @@ const CatPage = ({ checkout, setCheckout, cats }) => {
     }
   };
 
+  const changeSort = (e) => {
+    const value = e.target.value;
+    switch (value) {
+      default:
+        setCats([...cats]);
+        break;
+      case "priceLow":
+        setCats(cats.sort((a, b) => a.price - b.price));
+        break;
+      case "priceHigh":
+        setCats(cats.sort((a, b) => b.price - a.price));
+        break;
+    }
+  };
+
   return (
     <div className="App">
       <h1>Available cats</h1>
+      <select onChange={(e) => changeSort(e.target.value)}>
+        <option value="priceLow">Price: Low to High</option>
+        <option value="priceHigh">Price: High to Low</option>
+      </select>
       <div className="catWindow">
         {cats.map((currentCat, index) => {
           return (
@@ -31,6 +50,7 @@ const CatPage = ({ checkout, setCheckout, cats }) => {
               catInfo={currentCat}
               buyFunc={buyCat}
               removeFunc={removeCat}
+              checkout={checkout}
             />
           );
         })}
@@ -39,9 +59,17 @@ const CatPage = ({ checkout, setCheckout, cats }) => {
   );
 };
 
-const Cat = ({ catInfo, buyFunc, removeFunc }) => {
+const Cat = ({ catInfo, buyFunc, removeFunc, checkout }) => {
   const [modal, setModal] = useState(false);
   const [toggle, setToggle] = useState(true);
+
+  useEffect(() => {
+    if (
+      checkout.find((currentCat) => currentCat.id === catInfo.id) !== undefined
+    ) {
+      setToggle(false);
+    }
+  }, [checkout]);
 
   const openModal = async () => {
     setModal(true);
@@ -77,12 +105,11 @@ const Cat = ({ catInfo, buyFunc, removeFunc }) => {
           <p className="ownerName">{catInfo.ownerName}</p>
           <p className="ownerBio">{catInfo.ownerBio}</p>
           <p className="ownerEmail">{catInfo.ownerEmail}</p>
-          {toggle && (
+          {toggle ? (
             <button className="checkoutAdd" onClick={() => buyToggle()}>
               Add to Basket
             </button>
-          )}
-          {!toggle && (
+          ) : (
             <button className="checkoutRemove" onClick={() => removeToggle()}>
               Remove from Basket
             </button>

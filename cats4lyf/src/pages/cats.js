@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { faker } from "@faker-js/faker";
+import { useState } from "react";
 import Modal from "react-modal";
 
 Modal.setAppElement("#root");
@@ -27,14 +26,8 @@ const CatPage = ({ checkout, setCheckout, cats }) => {
 
 const Cat = ({ catInfo, buyFunc }) => {
   const [modal, setModal] = useState(false);
-  const [cat, setCat] = useState({});
 
   const openModal = async () => {
-    const catRequest = await fetch(
-      `https://api.thecatapi.com/v1/images/${catInfo.id}`
-    );
-    const catData = await catRequest.json();
-    setCat(catData);
     setModal(true);
   };
   const closeModal = () => {
@@ -46,13 +39,13 @@ const Cat = ({ catInfo, buyFunc }) => {
       <div className="Cat" onClick={openModal}>
         <img className="catImage" src={catInfo.url} alt="catImage" />
         <div className="CatDetails">
-          <h3>Cat Name</h3>
-          <h1>£ cat price</h1>
+          <h3>{catInfo.name}</h3>
+          <h1>{catInfo.price}</h1>
         </div>
       </div>{" "}
       <Modal className="ModalStyle" isOpen={modal} onRequestClose={closeModal}>
-        <img className="catImage" src={cat.url} alt="catImage" />
-        <h1>Cat Name</h1>
+        <img className="catImage" src={catInfo.url} alt="catImage" />
+        <h1>{catInfo.name}</h1>
         <button className="checkoutAdd" onClick={() => buyFunc(catInfo)}>
           Add to Checkout
         </button>

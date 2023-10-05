@@ -143,3 +143,16 @@ nav a:hover {
   flex-wrap: wrap;
   flex-direction: column;
 }
+
+#checkout {
+  text-align: center;
+}
+
+.cartRemove {
+  border-radius: 10px;
+}
+
+.cartRemove:hover {
+  background-color: rgb(223, 24, 24);
+  color: white;
+}

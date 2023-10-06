@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Modal from "react-modal";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 Modal.setAppElement("#root");
 
@@ -54,6 +56,51 @@ const CatPage = ({ checkout, setCheckout, cats, setCats }) => {
             />
           );
         })}
+      </div>
+      <div className="adverts">
+        <Carousel
+          width="20%"
+          autoPlay="true"
+          infiniteLoop="true"
+          centerMode="true"
+        >
+          <div>
+            <img
+              src="https://cdn.media.amplience.net/i/petsathome/pet-lozenge-phase-save-10-royal-canin-cat-food?w=480&amp;"
+              alt="Royal canin cat food"
+              srcset="//cdn.media.amplience.net/i/petsathome/pet-lozenge-phase-save-10-royal-canin-cat-food/.webp?w=480&amp;, //cdn.media.amplience.net/i/petsathome/pet-lozenge-phase-save-10-royal-canin-cat-food?w=480&amp;"
+            />
+          </div>
+          <div>
+            <img
+              src="https://cdn.media.amplience.net/i/petsathome/pet-lozenge-phase-save-3-cat-accessories?w=480&amp;"
+              alt="Cat accessories save 30%"
+              srcset="//cdn.media.amplience.net/i/petsathome/pet-lozenge-phase-save-3-cat-accessories/.webp?w=480&amp;, //cdn.media.amplience.net/i/petsathome/pet-lozenge-phase-save-3-cat-accessories?w=480&amp;"
+            />
+          </div>
+          <div>
+            <img
+              src="https://cdn.media.amplience.net/i/petsathome/pet-lozenge-phase-save-20-feliway?w=480&amp;"
+              alt="Feliway - Save 20%"
+              srcset="//cdn.media.amplience.net/i/petsathome/pet-lozenge-phase-save-20-feliway/.webp?w=480&amp;, //cdn.media.amplience.net/i/petsathome/pet-lozenge-phase-save-20-feliway?w=480&amp;"
+            />
+          </div>
+          <div>
+            <img
+              src="https://cdn.media.amplience.net/i/petsathome/cat-loz-newincat-p7w1?w=480&amp;"
+              alt="New in cat"
+              srcset="//cdn.media.amplience.net/i/petsathome/cat-loz-newincat-p7w1/.webp?w=480&amp;, //cdn.media.amplience.net/i/petsathome/cat-loz-newincat-p7w1?w=480&amp;"
+            />
+          </div>
+          <div>
+            <img
+              className="carouselImg"
+              src="https://cdn.media.amplience.net/i/petsathome/cat-lozenge-seriously-good-p4w3?w=480&amp;"
+              alt="Seriously Good - cat food"
+              srcset="//cdn.media.amplience.net/i/petsathome/cat-lozenge-seriously-good-p4w3/.webp?w=480&amp;, //cdn.media.amplience.net/i/petsathome/cat-lozenge-seriously-good-p4w3?w=480&amp;"
+            />
+          </div>
+        </Carousel>
       </div>
     </div>
   );

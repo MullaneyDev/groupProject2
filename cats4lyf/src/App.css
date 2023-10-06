@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   margin: 10px;
+  justify-items: center;
 }
 nav {
   display: flex;
@@ -157,4 +158,9 @@ nav a:hover {
 .cartRemove:hover {
   background-color: rgb(223, 24, 24);
   color: white;
+}
+.carousel-root {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
 }

@@ -42,12 +42,13 @@ const CheckoutPage = ({ checkout, setCheckout }) => {
           onRequestClose={closeModal}
         >
           <>
-            <form>
+            <form id="checkoutForm">
               <h1>Total : £{total.toFixed(2)}</h1>
               <label>
-                Name on card : <input type="text"></input> Card Number :{" "}
-                <input type="text"></input>Expiry Date :{" "}
-                <input type="text"></input>CCV : <input type="text"></input>
+                Name on card : <input id="cardName" type="text"></input> Card
+                Number : <input id="cardNumber" type="text"></input>Expiry Date
+                : <input id="expiry" type="text"></input>CCV :{" "}
+                <input id="ccv" type="text"></input>
                 <button className="checkoutAdd">Confirm Purchase</button>
               </label>
             </form>
@@ -57,21 +58,16 @@ const CheckoutPage = ({ checkout, setCheckout }) => {
       <div className="catWindow">
         {checkout.map((checkItem, index) => {
           return (
-            <>
-              <div key={index} className="Cat">
-                <img className="catImage" src={checkItem.url} alt="cats"></img>
-                <h3>{checkItem.name}</h3>
-                <h1>£{checkItem.price}</h1>
-                <h5>{checkItem.breed}</h5>
-                <h5>{checkItem.gender}</h5>
-                <button
-                  className="cartRemove"
-                  onClick={() => removeItem(index)}
-                >
-                  Remove from cart
-                </button>
-              </div>
-            </>
+            <div key={index} className="Cat">
+              <img className="catImage" src={checkItem.url} alt="cats"></img>
+              <h3>{checkItem.name}</h3>
+              <h1>£{checkItem.price}</h1>
+              <h5>{checkItem.breed}</h5>
+              <h5>{checkItem.gender}</h5>
+              <button className="cartRemove" onClick={() => removeItem(index)}>
+                Remove from cart
+              </button>
+            </div>
           );
         })}
       </div>

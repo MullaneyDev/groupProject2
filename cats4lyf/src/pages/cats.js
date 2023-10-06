@@ -37,7 +37,7 @@ const CatPage = ({ checkout, setCheckout, cats, setCats }) => {
   return (
     <div className="App">
       <h1>Available cats</h1>
-      <select onChange={(e) => changeSort(e.target)}>
+      <select id="dropdown" onChange={(e) => changeSort(e.target)}>
         <option>Default</option>
         <option value="priceLow">Price: Low to High</option>
         <option value="priceHigh">Price: High to Low</option>
@@ -91,14 +91,14 @@ const Cat = ({ catInfo, buyFunc, removeFunc, checkout }) => {
         <img className="catImage" src={catInfo.url} alt="catImage" />
         <div className="CatDetails">
           <h3>{catInfo.name}</h3>
-          <h1>{catInfo.price}</h1>
+          <h1>£{catInfo.price}</h1>
         </div>
       </div>{" "}
       <Modal className="ModalStyle" isOpen={modal} onRequestClose={closeModal}>
         <>
           <img className="catImageModal" src={catInfo.url} alt="catImage" />
           <h1 className="catName">{catInfo.name}</h1>
-          <h2 className="catPrice">{catInfo.price}</h2>
+          <h2 className="catPrice">£{catInfo.price}</h2>
           <h3 className="catBreed">Breed : {catInfo.breed}</h3>
           <p className="catGender">Sex : {catInfo.gender}</p>
           <h3 className="ownerDetails">Owner Details</h3>

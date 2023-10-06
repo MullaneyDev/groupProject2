@@ -4,6 +4,8 @@ import { faker } from "@faker-js/faker";
 import Cats from "./pages/cats";
 import Home from "./pages/home";
 import Checkout from "./pages/checkout";
+import MainMatrix from "./pages/matrix";
+import MatrixRain from "./pages/MatrixRain";
 
 import "./App.css";
 
@@ -48,6 +50,7 @@ function App() {
         <Link to="/checkout">🛒</Link>
       </nav>
       <Routes>
+        <Route path="/matrix" element={<MatrixRain />} />
         <Route path="/" element={<Home />} />
         <Route
           path="/cats"

@@ -1,3 +1,7 @@
+@font-face {
+  font-family: matrixFont;
+  src: url(./matrix\ code\ nfi.ttf);
+}
 .App {
   text-align: center;
   margin: 10px;

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
+import { Link } from "react-router-dom";
 
 Modal.setAppElement("#root");
 
@@ -28,6 +29,13 @@ const CheckoutPage = ({ checkout, setCheckout }) => {
     setTotal(totalValue);
   }, [checkout]);
 
+  function dltArray() {
+    let storedArray = [...checkout];
+    storedArray = [];
+    setCheckout(storedArray);
+    closeModal();
+  }
+
   return (
     <div id="checkout">
       <header>
@@ -49,7 +57,11 @@ const CheckoutPage = ({ checkout, setCheckout }) => {
                 Number : <input id="cardNumber" type="text"></input>Expiry Date
                 : <input id="expiry" type="text"></input>CCV :{" "}
                 <input id="ccv" type="text"></input>
-                <button className="checkoutAdd">Confirm Purchase</button>
+                <button className="checkoutAdd" onClick={() => dltArray()}>
+                  <Link target="_blank" to="/matrix">
+                    Confirm Purchase
+                  </Link>
+                </button>
               </label>
             </form>
           </>
